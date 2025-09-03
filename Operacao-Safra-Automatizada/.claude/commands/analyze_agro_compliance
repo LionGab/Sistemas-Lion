@@ -1,0 +1,45 @@
+# /analyze_agro_compliance
+
+## Purpose  
+Comprehensive analysis of agribusiness fiscal compliance using specialized knowledge of Brazilian agricultural regulations.
+
+## Parameters
+- `compliance_type`: (required) [nfpe, sped_fiscal, funrural, sefaz_mt, full_audit]
+- `fazenda_id`: (required) Farm/cooperative identifier  
+- `period`: (optional) Analysis period [current_month, current_year, custom] (default: current_month)
+- `depth`: (optional) Analysis depth [surface, detailed, comprehensive] (default: detailed)
+
+## Usage Examples
+```
+/analyze_agro_compliance compliance_type=full_audit fazenda_id=fazenda_brasil depth=comprehensive
+/analyze_agro_compliance compliance_type=nfpe fazenda_id=cooperfibra_001 period=current_year
+/analyze_agro_compliance compliance_type=sefaz_mt fazenda_id=fazenda_brasil
+```
+
+## Specialized Analysis Framework
+1. **Regulatory Mapping**: Map current processes against SEFAZ-MT requirements
+2. **Risk Assessment**: Identify fiscal risks and non-compliance gaps
+3. **Data Quality Audit**: Validate data accuracy for fiscal documents
+4. **Process Efficiency**: Analyze manual vs automated compliance workflows
+5. **Penalty Exposure**: Calculate potential fines and audit risks
+
+## Technical Integration Points
+- SEFAZ-MT API compliance validation
+- TOTVS Agro data quality checks
+- NFP-e generation accuracy analysis  
+- SPED Fiscal transmission validation
+- FUNRURAL calculation verification
+
+## Expected Deliverables
+- Comprehensive compliance scorecard
+- Risk mitigation action plan with priorities
+- Automation opportunities with ROI projections
+- Regulatory update recommendations
+- Integration roadmap for full compliance
+
+## Compliance Expertise Focus
+- MT state-specific agricultural regulations
+- Federal agribusiness tax requirements  
+- NFP-e technical specifications (version 1.80+)
+- SPED Fiscal EFD-Contribuições
+- FUNRURAL calculation methodologies

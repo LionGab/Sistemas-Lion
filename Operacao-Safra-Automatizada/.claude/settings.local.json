@@ -1,0 +1,79 @@
+{
+  "env": {
+    "PROJECT_NAME": "Operação Safra Automatizada",
+    "ENVIRONMENT": "development",
+    "AGRO_REGION": "MT",
+    "COMPLIANCE_MODE": "SEFAZ-MT"
+  },
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(where uvx)",
+      "Bash(uvx:*)",
+      "Bash(python:*)",
+      "Bash(git status)",
+      "Bash(git branch)",
+      "Bash(git log --oneline -10)",
+      "Bash(python -m pytest tests/agro/)",
+      "Bash(python manage.py validate_nfpe)",
+      "Bash(docker-compose ps)",
+      "Bash(docker-compose logs --tail=50)",
+      "Bash(uvicorn main:app --reload --port 8000)",
+      "Bash(celery -A celery_app worker --loglevel=info)",
+      "Bash(pg_dump operacao_safra_test)",
+      "Bash(python scripts/totvs_health_check.py)",
+      "Bash(python scripts/sefaz_connectivity_test.py)",
+      "Bash(python scripts/validate_agro_automation.py)",
+      "Bash(python .claude/hooks/post_agro_implementation.py)",
+      "Read(C:\\Users\\User\\.claude/**)",
+      "Read(C:\\Users\\User/**)",
+      "WebFetch(domain:clubelion.com.br)",
+      "Bash(tree:*)",
+      "Bash(find:*)",
+      "Bash(claude mcp:*)",
+      "Bash(npm:*)",
+      "Bash(npx playwright install:*)",
+      "Bash(node:*)",
+      "Bash(timeout:*)",
+      "Bash(echo:*)",
+      "WebFetch(domain:www.claudemcp.com)",
+      "Bash(npx:*)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:playbooks.com)",
+      "Bash(uv tool install:*)",
+      "Bash(uv tool run basic-memory:*)"
+    ],
+    "deny": [
+      "Bash(rm -rf /)",
+      "Bash(DELETE FROM)",
+      "Bash(DROP TABLE)",
+      "Bash(git push --force)",
+      "Bash(terraform destroy)"
+    ],
+    "ask": []
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'File written - Operação Safra Automatizada'"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "implement_agro_automation",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python .claude/hooks/post_agro_implementation.py"
+          }
+        ]
+      }
+    ]
+  }
+}
